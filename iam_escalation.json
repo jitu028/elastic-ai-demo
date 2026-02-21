@@ -1,0 +1,8 @@
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T11:10:00Z","user":"developer1@company.com","action":"login","ip":"10.0.0.5","status":"success"}
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T11:11:20Z","user":"developer1@company.com","action":"set-iam-policy","resource":"project","role":"roles/owner","ip":"10.0.0.5","status":"success"}
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T11:12:10Z","user":"developer1@company.com","action":"create-service-account","ip":"10.0.0.5","status":"success"}
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T11:13:45Z","user":"developer1@company.com","action":"create-service-account-key","ip":"10.0.0.5","status":"success"}

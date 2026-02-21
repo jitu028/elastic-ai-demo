@@ -1,0 +1,8 @@
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T10:01:00Z","user":"ci-pipeline@project.iam.gserviceaccount.com","action":"create-service-account-key","ip":"10.1.2.3","status":"success"}
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T10:02:30Z","user":"ci-pipeline@project.iam.gserviceaccount.com","action":"authenticate","ip":"45.77.12.90","status":"success"}
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T10:03:05Z","user":"ci-pipeline@project.iam.gserviceaccount.com","action":"list-instances","ip":"45.77.12.90","status":"success"}
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T10:04:10Z","user":"ci-pipeline@project.iam.gserviceaccount.com","action":"create-firewall-rule","ip":"45.77.12.90","status":"success"}

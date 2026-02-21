@@ -1,0 +1,8 @@
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T12:00:00Z","user":"analytics@project.iam.gserviceaccount.com","action":"read-object","bucket":"customer-data","ip":"10.2.1.4","status":"success"}
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T12:00:05Z","user":"analytics@project.iam.gserviceaccount.com","action":"read-object","bucket":"customer-data","ip":"185.199.110.153","status":"success"}
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T12:00:07Z","user":"analytics@project.iam.gserviceaccount.com","action":"read-object","bucket":"customer-data","ip":"185.199.110.153","status":"success"}
+{"index":{"_index":"gcp-audit"}}
+{"timestamp":"2026-02-15T12:00:10Z","user":"analytics@project.iam.gserviceaccount.com","action":"read-object","bucket":"customer-data","ip":"185.199.110.153","status":"success"}
