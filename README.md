@@ -1,75 +1,145 @@
-# README.md
+# Elastic AI Demo
+
+A demonstration project showcasing security incident detection and
+AI-powered threat analysis using:
+
+-   Elasticsearch
+-   Kibana
+-   Docker
+-   Google Gemini (Generative AI API)
+
+------------------------------------------------------------------------
 
 ## Overview
-This project is an innovative implementation of AI-driven elastic scaling solutions, focusing on performance and adaptability in real-time applications.
 
-## Features
-- **Elastic Scaling**: Automatically adjusts resource usage based on current demand.
-- **AI-Driven**: Utilizes machine learning algorithms for optimizing performance.
-- **Real-time Monitoring**: Provides live insights into system performance.
-  
+This project simulates real-world cloud security incidents and
+demonstrates how:
+
+1.  Logs are ingested into Elasticsearch\
+2.  Threat patterns are detected\
+3.  An AI agent analyzes suspicious activity\
+4.  Risk insights are generated using Generative AI
+
+------------------------------------------------------------------------
+
 ## Project Structure
-```
-elastic-ai-demo/
-├── src/
-│   ├── main/
-│   ├── test/
-│   └── resources/
-├── docs/
-└── README.md
-```
 
-## Prerequisites
-- Java 11 or higher
-- Maven 3.6 or higher
-- Node.js 12 or higher (for frontend)
+elastic-ai-demo/ ├── README.md ├── requirements.txt ├──
+docker-compose.yml ├── run_agent.py ├── agent/ │ ├── analyzer.py │ ├──
+elastic_client.py │ └── ai_client.py ├── data_exfiltration.json ├──
+iam_escalation.json ├── sa_key_leak.json ├── secret_breach.json └──
+logs.json
 
-## Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/jitu028/elastic-ai-demo.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd elastic-ai-demo
-   ```
-3. Install dependencies:
-   ```bash
-   mvn install
-   ```
-
-## Quick Start
-1. Start the application:
-   ```bash
-   mvn spring-boot:run
-   ```
-2. Access the application at `http://localhost:8080`
+------------------------------------------------------------------------
 
 ## Architecture
-The architecture of the Elastic AI system is based on microservices, ensuring scalability and fault tolerance.
 
-![Architecture Diagram](docs/architecture.svg)
+Security Logs → Elasticsearch → AI Agent → Gemini AI → Risk Insights ↓
+Kibana
+
+------------------------------------------------------------------------
+
+## Prerequisites
+
+-   Docker (v20+)
+-   Docker Compose (v1.29+)
+-   Python 3.8+
+-   pip
+-   Git
+
+Optional: - Google Cloud Project - Google API Key
+
+------------------------------------------------------------------------
+
+## Installation
+
+### 1. Clone Repository
+
+git clone https://github.com/jitu028/elastic-ai-demo.git cd
+elastic-ai-demo
+
+### 2. Install Dependencies
+
+pip install -r requirements.txt
+
+### 3. Configure Environment Variables
+
+Create a .env file:
+
+GOOGLE_API_KEY=your_google_api_key ELASTICSEARCH_HOST=localhost
+ELASTICSEARCH_PORT=9200 KIBANA_HOST=localhost KIBANA_PORT=5601
+
+### 4. Start Services
+
+docker-compose up -d
+
+------------------------------------------------------------------------
+
+## Quick Start
+
+Verify Elasticsearch:
+
+curl http://localhost:9200/\_cluster/health?pretty
+
+Access Kibana:
+
+http://localhost:5601
+
+Load Sample Data:
+
+curl -X POST "http://localhost:9200/\_bulk" -H 'Content-Type:
+application/json' -d @data_exfiltration.json
+
+Run AI Agent:
+
+python run_agent.py
+
+------------------------------------------------------------------------
 
 ## Security Scenarios
-- **Authentication**: JWT-based authentication for secure API access.
-- **Authorization**: Role-based access control.
-- **Data Protection**: Implement encryption for sensitive data.
 
-## Usage
-- **API Endpoints**:
-   - GET `/api/data`: Retrieve data.
-   - POST `/api/data`: Create a new data entry.
+1.  Data Exfiltration\
+2.  IAM Privilege Escalation\
+3.  Service Account Key Leak\
+4.  Secret / Credential Exposure
 
-## Configuration
-Configuration settings can be found in `application.properties` file, including:
-- Database settings
-- Server port
+------------------------------------------------------------------------
+
+## Docker Configuration
+
+Elasticsearch: - Version: 8.13.4 - Port: 9200 - JVM Heap: 1GB
+
+To increase memory:
+
+environment: - ES_JAVA_OPTS=-Xms2g -Xmx2g
+
+------------------------------------------------------------------------
 
 ## Troubleshooting
-- **Common Issues**:
-   - Unable to start the application:
-     - Ensure you have installed all required dependencies.
-   - Database connection errors:
-     - Check your database settings in the configuration file.
 
-For help, feel free to raise an issue in the repository's issue tracker.
+Elasticsearch logs:
+
+docker-compose logs elasticsearch
+
+Restart services:
+
+docker-compose restart elasticsearch
+
+Reinstall dependencies:
+
+pip install --upgrade -r requirements.txt
+
+------------------------------------------------------------------------
+
+## Production Notes
+
+This is a demo project. For production: - Enable Elasticsearch
+security - Use HTTPS - Protect API keys - Configure authentication
+
+------------------------------------------------------------------------
+
+## License
+
+MIT License
+
+Maintainer: @jitu028 Last Updated: February 22, 2026
