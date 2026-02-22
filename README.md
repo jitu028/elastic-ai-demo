@@ -1,43 +1,75 @@
-# Elastic AI Demo
+# README.md
 
-A demonstration project showcasing security incident detection and analysis using Elasticsearch, Kibana, and AI-powered threat analysis capabilities.
+## Overview
+This project is an innovative implementation of AI-driven elastic scaling solutions, focusing on performance and adaptability in real-time applications.
 
-## 📋 Table of Contents
+## Features
+- **Elastic Scaling**: Automatically adjusts resource usage based on current demand.
+- **AI-Driven**: Utilizes machine learning algorithms for optimizing performance.
+- **Real-time Monitoring**: Provides live insights into system performance.
+  
+## Project Structure
+```
+elastic-ai-demo/
+├── src/
+│   ├── main/
+│   ├── test/
+│   └── resources/
+├── docs/
+└── README.md
+```
 
-- [Overview](#overview)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-- [Architecture](#architecture)
-- [Security Scenarios](#security-scenarios)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
+## Prerequisites
+- Java 11 or higher
+- Maven 3.6 or higher
+- Node.js 12 or higher (for frontend)
 
-## 🎯 Overview
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/jitu028/elastic-ai-demo.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd elastic-ai-demo
+   ```
+3. Install dependencies:
+   ```bash
+   mvn install
+   ```
 
-The **Elastic AI Demo** project demonstrates a comprehensive security monitoring and threat detection system. It integrates Elasticsearch for data indexing and search, Kibana for visualization, and AI/ML models for intelligent threat analysis and anomaly detection.
+## Quick Start
+1. Start the application:
+   ```bash
+   mvn spring-boot:run
+   ```
+2. Access the application at `http://localhost:8080`
 
-This project showcases real-world security scenarios including:
-- Data exfiltration detection
-- IAM privilege escalation detection
-- Service account key leaks
-- Secret/credential breaches
-- Suspicious access patterns and unauthorized activities
+## Architecture
+The architecture of the Elastic AI system is based on microservices, ensuring scalability and fault tolerance.
 
-## ✨ Features
+![Architecture Diagram](docs/architecture.svg)
 
-- **Real-time Log Analysis**: Ingest and analyze security logs in real-time
-- **AI-Powered Threat Detection**: Machine learning models for intelligent threat detection
-- **Interactive Dashboards**: Kibana-based visualization of security events
-- **Multiple Security Scenarios**: Pre-configured datasets for various attack scenarios
-- **Containerized Architecture**: Docker-based deployment for easy setup
-- **Google AI Integration**: Uses Google's Generative AI (Gemini) for intelligent analysis
-- **Elasticsearch Integration**: Enterprise-grade search and analytics platform
-- **Scalable Design**: Built to handle large-scale log ingestion and analysis
+## Security Scenarios
+- **Authentication**: JWT-based authentication for secure API access.
+- **Authorization**: Role-based access control.
+- **Data Protection**: Implement encryption for sensitive data.
 
-## 📁 Project Structure
+## Usage
+- **API Endpoints**:
+   - GET `/api/data`: Retrieve data.
+   - POST `/api/data`: Create a new data entry.
+
+## Configuration
+Configuration settings can be found in `application.properties` file, including:
+- Database settings
+- Server port
+
+## Troubleshooting
+- **Common Issues**:
+   - Unable to start the application:
+     - Ensure you have installed all required dependencies.
+   - Database connection errors:
+     - Check your database settings in the configuration file.
+
+For help, feel free to raise an issue in the repository's issue tracker.
