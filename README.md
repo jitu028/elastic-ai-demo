@@ -13,43 +13,29 @@ A demonstration project showcasing security incident detection and AI-powered th
 
 This project simulates real-world cloud security incidents and demonstrates how:
 
-1. Logs are ingested into Elasticsearch
-2. Threat patterns are detected
-3. An AI agent analyzes suspicious activity
-4. Risk insights are generated using Generative AI
+1. Logs are ingested into Elasticsearch  
+2. Threat patterns are detected  
+3. An AI agent analyzes suspicious activity  
+4. Risk insights are generated using Generative AI  
 
 ---
 
 ## Project Structure
 
-```text
 elastic-ai-demo/
-├── agent/
-│   ├── __init__.py
-│   ├── agent.py
-│   ├── llm.py
-│   ├── mcp_client.py
-│   ├── mcp_tool.py
-│   ├── prompts.py
-│   └── tools.py
-├── data_exfiltration.json
-├── docker-compose.yml
-├── iam_escalation.json
-├── logs.json
 ├── README.md
 ├── requirements.txt
+├── docker-compose.yml
 ├── run_agent.py
+├── agent/
+│   ├── analyzer.py
+│   ├── elastic_client.py
+│   └── ai_client.py
+├── data_exfiltration.json
+├── iam_escalation.json
 ├── sa_key_leak.json
-└── secret_breach.json
-```
-
----
-
-## Architecture
-
-Security Logs → Elasticsearch → AI Agent → Gemini AI → Risk Insights
-      ↓
-    Kibana
+├── secret_breach.json
+└── logs.json
 
 ---
 
@@ -71,65 +57,78 @@ Optional:
 
 ### 1. Clone Repository
 
-```bash
 git clone https://github.com/jitu028/elastic-ai-demo.git
 cd elastic-ai-demo
-```
 
-### 2. Install Dependencies
+---
 
-```bash
+### 2. Create and Activate Python Virtual Environment (Recommended)
+
+#### macOS / Linux
+
+python3 -m venv venv  
+source venv/bin/activate  
+
+#### Windows
+
+python -m venv venv  
+venv\Scripts\activate  
+
+After activation, you should see `(venv)` in your terminal.
+
+---
+
+### 3. Install Dependencies
+
+pip install --upgrade pip  
 pip install -r requirements.txt
-```
 
-### 3. Configure Environment Variables
+---
+
+### 4. Configure Environment Variables
 
 Create a `.env` file:
 
-```text
-GOOGLE_API_KEY=your_google_api_key
-ELASTICSEARCH_HOST=localhost
-ELASTICSEARCH_PORT=9200
-KIBANA_HOST=localhost
-KIBANA_PORT=5601
-```
+GOOGLE_API_KEY=your_google_api_key  
+ELASTICSEARCH_HOST=localhost  
+ELASTICSEARCH_PORT=9200  
+KIBANA_HOST=localhost  
+KIBANA_PORT=5601  
 
-### 4. Start Services
+---
 
-```bash
+### 5. Start Services
+
 docker-compose up -d
-```
 
 ---
 
 ## Quick Start
 
-Verify Elasticsearch:
-```bash
+### Verify Elasticsearch
+
 curl http://localhost:9200/_cluster/health?pretty
-```
 
-Access Kibana:
-`http://localhost:5601`
+### Access Kibana
 
-Load Sample Data:
-```bash
-curl -X POST "http://localhost:9200/_bulk" -H 'Content-Type: application/json' --data-binary @data_exfiltration.json
-```
+http://localhost:5601
 
-Run AI Agent:
-```bash
+### Load Sample Data
+
+curl -X POST "http://localhost:9200/_bulk" -H 'Content-Type: application/json' -d @data_exfiltration.json
+
+### Run AI Agent
+
 python run_agent.py
-```
 
 ---
 
 ## Security Scenarios
 
-1. Data Exfiltration
-2. IAM Privilege Escalation
-3. Service Account Key Leak
-4. Secret / Credential Exposure
+1. Data Exfiltration  
+2. IAM Privilege Escalation  
+3. Service Account Key Leak  
+4. Secret / Credential Exposure  
 
 ---
 
@@ -141,29 +140,25 @@ Elasticsearch:
 - JVM Heap: 1GB
 
 To increase memory:
-```yaml
+
 environment:
   - ES_JAVA_OPTS=-Xms2g -Xmx2g
-```
 
 ---
 
 ## Troubleshooting
 
-Elasticsearch logs:
-```bash
+### Elasticsearch logs
+
 docker-compose logs elasticsearch
-```
 
-Restart services:
-```bash
+### Restart services
+
 docker-compose restart elasticsearch
-```
 
-Reinstall dependencies:
-```bash
+### Reinstall dependencies
+
 pip install --upgrade -r requirements.txt
-```
 
 ---
 
@@ -174,6 +169,15 @@ This is a demo project. For production:
 - Use HTTPS
 - Protect API keys
 - Configure authentication
+- Use secrets manager instead of plain .env files
+
+---
+
+## Deactivate Virtual Environment
+
+When finished working:
+
+deactivate
 
 ---
 
@@ -181,5 +185,5 @@ This is a demo project. For production:
 
 MIT License
 
-Maintainer: @jitu028
+Maintainer: @jitu028  
 Last Updated: February 22, 2026
